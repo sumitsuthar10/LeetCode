@@ -1,0 +1,26 @@
+class Solution {
+    public boolean canReach(String s, int minJump, int maxJump) {
+        
+        int n = s.length();
+        boolean[] reach = new boolean[n];
+        reach[0] = true;
+        int far = 0;
+        for (int i = 0; i < n; i++) {
+            if (!reach[i]) {
+                continue;
+            }
+            int start = Math.max(i + minJump, far + 1);
+            int end = Math.min(i + maxJump, n - 1);
+            for (int j = start; j <= end; j++) {
+                if (s.charAt(j) == '0') {
+                    reach[j] = true;
+                }
+            }
+            far = end;
+            if (reach[n - 1]) {
+                return true;
+            }
+        }
+        return reach[n - 1];
+    }
+}
