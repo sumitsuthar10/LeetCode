@@ -18,8 +18,6 @@ class Solution {
             k--;
             j--;
         }
-
-
         
     }
 }
